@@ -17,9 +17,9 @@ env/
 .ipynb_checkpoints/
 
 # Data files
-*.csv
-*.xlsx
-*.parquet
+# *.csv
+# *.xlsx
+# *.parquet
 
 # Environment variables
 .env

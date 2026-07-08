@@ -1,0 +1,7 @@
+medical_specialty_group,encounters,population_percent,readmitted,readmission_rate
+Cardiology,4207,6.0,303,7.2
+Family/General Practice,4978,7.1,485,9.7
+Internal Medicine,10641,15.2,1039,9.8
+Missing,33652,48.1,3110,9.2
+Other,12915,18.5,1062,8.2
+Surgery,3594,5.1,286,8.0

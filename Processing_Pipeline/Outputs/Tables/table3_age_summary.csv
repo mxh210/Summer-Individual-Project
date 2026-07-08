@@ -1,0 +1,4 @@
+age_group,encounters,population_percent,readmitted,readmission_rate
+30-60,21871,31.3,1574,7.2
+<=30,1808,2.6,112,6.2
+>60,46308,66.2,4599,9.9

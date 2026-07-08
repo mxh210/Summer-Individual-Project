@@ -1,0 +1,10 @@
+primary_diagnosis,encounters,population_percent,readmitted,readmission_rate
+Circulatory,21389,30.6,2070,9.7
+Diabetes,5748,8.2,524,9.1
+Digestive,6488,9.3,520,8.0
+Genitourinary,3441,4.9,309,9.0
+Injury,4694,6.7,507,10.8
+Musculoskeletal,4064,5.8,341,8.4
+Neoplasms,2538,3.6,230,9.1
+Other,12134,17.3,1091,9.0
+Respiratory,9491,13.6,693,7.3

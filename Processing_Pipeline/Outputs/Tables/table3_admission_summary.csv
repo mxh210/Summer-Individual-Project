@@ -1,0 +1,4 @@
+admission_source_group,encounters,population_percent,readmitted,readmission_rate
+Emergency room,37271,53.3,3452,9.3
+Other,10968,15.7,960,8.8
+Physician/clinic referral,21748,31.1,1873,8.6

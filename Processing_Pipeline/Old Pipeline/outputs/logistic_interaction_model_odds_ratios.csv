@@ -1,0 +1,51 @@
+,coef,odds_ratio,ci_lower,ci_upper,p_value
+Intercept,-2.8031327701605497,0.06061985676674403,0.050566905537004506,0.07267138448350162,1.1683962391322108e-201
+"C(discharge_group, Treatment(reference=""Home""))[T.Other]",0.5398823637420692,1.7158050094318416,1.620168550973615,1.817086764597584,5.2105739420954736e-76
+"C(race_group, Treatment(reference=""African American""))[T.Caucasian]",0.020624802025735973,1.020838963064003,0.9512204667419364,1.0955527398174782,0.5671196553303826
+"C(race_group, Treatment(reference=""African American""))[T.Missing]",-0.18726356469315847,0.8292251531082139,0.6896097004962021,0.997106557597108,0.04650636774301666
+"C(race_group, Treatment(reference=""African American""))[T.Other]",-0.07693750152380419,0.925947722119799,0.7999477940068715,1.0717939227062605,0.30257604841546726
+"C(admission_source_group, Treatment(reference=""Emergency""))[T.Other]",-0.13980835786173262,0.8695248570353113,0.80215211491747,0.9425562345865882,0.0006795678013968931
+"C(admission_source_group, Treatment(reference=""Emergency""))[T.Referral]",-0.020935406254029048,0.979282218033374,0.9200548315046078,1.0423222939746737,0.5107209074088759
+"C(specialty_group, Treatment(reference=""Cardiology""))[T.Family/General Practice]",0.27143929894191504,1.3118512386813632,1.124349338872496,1.5306218565091245,0.0005619181848686303
+"C(specialty_group, Treatment(reference=""Cardiology""))[T.Internal Medicine]",0.2796454494486646,1.3226607790858966,1.151466591224939,1.5193072468312367,7.677445049226873e-05
+"C(specialty_group, Treatment(reference=""Cardiology""))[T.Missing]",0.15964341597627046,1.173092490361899,1.03227598279703,1.3331182880131631,0.014411508857867555
+"C(specialty_group, Treatment(reference=""Cardiology""))[T.Other]",0.09360721281207302,1.0981283304565845,0.955151878378747,1.2625068928286136,0.1884265147828167
+"C(specialty_group, Treatment(reference=""Cardiology""))[T.Surgery]",0.03212052896209899,1.0326419610684932,0.8699031320241384,1.2258254747033075,0.7135459377392499
+"C(age_group, Treatment(reference=""30-60""))[T.60+]",0.19799645982676375,1.2189580784912386,1.1448045920451475,1.2979147772849386,6.286045069955335e-10
+"C(age_group, Treatment(reference=""30-60""))[T.<30]",-0.03912126948900174,0.9616340852009275,0.7836980516882261,1.179969902729972,0.7078514694488418
+"C(diag1_group, Treatment(reference=""Diabetes""))[T.Circulatory]",-0.07755611325911671,0.925375097127141,0.8190482914979191,1.0455049833715957,0.2129892763723833
+"C(diag1_group, Treatment(reference=""Diabetes""))[T.Digestive]",-0.21697820975889776,0.8049475091142007,0.6956978000650232,0.9313533726405296,0.0035504347502484774
+"C(diag1_group, Treatment(reference=""Diabetes""))[T.Genitourinary]",-0.1969549443231719,0.8212276334459735,0.6931608136422734,0.9729557884143842,0.022791203069379474
+"C(diag1_group, Treatment(reference=""Diabetes""))[T.Injury]",-0.02056186256007472,0.9796480910610488,0.8457056159414726,1.1348043151530567,0.7839985982713625
+"C(diag1_group, Treatment(reference=""Diabetes""))[T.Musculoskeletal]",-0.31708501879799394,0.728268835952543,0.6168863453055766,0.8597620963014652,0.00018100218923462551
+"C(diag1_group, Treatment(reference=""Diabetes""))[T.Neoplasms]",-0.15665833118609412,0.8549961344334251,0.7118201022921914,1.0269707016451013,0.09386516542440954
+"C(diag1_group, Treatment(reference=""Diabetes""))[T.Other]",-0.15223290207275758,0.8587882438854678,0.755117905387669,0.9766915107876466,0.020380207453280664
+"C(diag1_group, Treatment(reference=""Diabetes""))[T.Respiratory]",-0.31949270896695753,0.7265174994197712,0.6324811204793968,0.8345350712809952,6.2545061144667464e-06
+"C(a1c_group, Treatment(reference=""Not measured""))[T.High, medication changed]",-0.3999846415369291,0.6703303412003708,0.5099399830837736,0.8811679437577793,0.004148849734835815
+"C(a1c_group, Treatment(reference=""Not measured""))[T.High, medication not changed]",-0.6417695440857916,0.52636018191763,0.3455606712509102,0.8017551305981576,0.0027984494885359822
+"C(a1c_group, Treatment(reference=""Not measured""))[T.Normal/near-normal measured]",0.03541956207817194,1.0360543067208712,0.7717730499922385,1.3908344253348315,0.8136361825384474
+"C(a1c_group, Treatment(reference=""Not measured""))[T.High, medication changed]:C(diag1_group, Treatment(reference=""Diabetes""))[T.Circulatory]",0.5557373046939728,1.743225799630581,1.252455955625774,2.4263018390769377,0.000986377526670367
+"C(a1c_group, Treatment(reference=""Not measured""))[T.High, medication not changed]:C(diag1_group, Treatment(reference=""Diabetes""))[T.Circulatory]",0.6438430840487631,1.9037832375216281,1.159872876641284,3.1248171144097325,0.010878700396532008
+"C(a1c_group, Treatment(reference=""Not measured""))[T.Normal/near-normal measured]:C(diag1_group, Treatment(reference=""Diabetes""))[T.Circulatory]",-0.0772423764949039,0.9256654668632458,0.6648840133603328,1.2887308753485982,0.6472999928451739
+"C(a1c_group, Treatment(reference=""Not measured""))[T.High, medication changed]:C(diag1_group, Treatment(reference=""Diabetes""))[T.Digestive]",0.510491575757906,1.6661100129662318,0.9473046658519406,2.9303376995508237,0.07638642567228805
+"C(a1c_group, Treatment(reference=""Not measured""))[T.High, medication not changed]:C(diag1_group, Treatment(reference=""Diabetes""))[T.Digestive]",0.32470527332296495,1.3836227953327322,0.6004558209558117,3.1882646032425552,0.44583498530520527
+"C(a1c_group, Treatment(reference=""Not measured""))[T.Normal/near-normal measured]:C(diag1_group, Treatment(reference=""Diabetes""))[T.Digestive]",-0.10140198142017864,0.9035697416246188,0.571849030334719,1.4277164682813164,0.6639731298002489
+"C(a1c_group, Treatment(reference=""Not measured""))[T.High, medication changed]:C(diag1_group, Treatment(reference=""Diabetes""))[T.Genitourinary]",0.4997910308677045,1.6483767748425466,0.9044818569078787,3.004091205465779,0.10265420723013628
+"C(a1c_group, Treatment(reference=""Not measured""))[T.High, medication not changed]:C(diag1_group, Treatment(reference=""Diabetes""))[T.Genitourinary]",-0.21420072334400977,0.8071863476179477,0.23433864611453328,2.780377076439866,0.7342718167461614
+"C(a1c_group, Treatment(reference=""Not measured""))[T.Normal/near-normal measured]:C(diag1_group, Treatment(reference=""Diabetes""))[T.Genitourinary]",0.2613726638932925,1.2987115581689457,0.804067649907526,2.097649011890466,0.2853001820609862
+"C(a1c_group, Treatment(reference=""Not measured""))[T.High, medication changed]:C(diag1_group, Treatment(reference=""Diabetes""))[T.Injury]",-0.1546147743284842,0.8567451541491166,0.4225334114742699,1.7371697461673772,0.6681380895926813
+"C(a1c_group, Treatment(reference=""Not measured""))[T.High, medication not changed]:C(diag1_group, Treatment(reference=""Diabetes""))[T.Injury]",0.376055990393388,1.456528683102023,0.5647390214601657,3.75655962149333,0.43660510299096666
+"C(a1c_group, Treatment(reference=""Not measured""))[T.Normal/near-normal measured]:C(diag1_group, Treatment(reference=""Diabetes""))[T.Injury]",-0.6244217337218407,0.5355710416638949,0.32281837080084674,0.8885378485659502,0.0156275369431943
+"C(a1c_group, Treatment(reference=""Not measured""))[T.High, medication changed]:C(diag1_group, Treatment(reference=""Diabetes""))[T.Musculoskeletal]",0.7889117294117114,2.200999839035124,1.0962323698283933,4.419136329819376,0.026533281786156174
+"C(a1c_group, Treatment(reference=""Not measured""))[T.High, medication not changed]:C(diag1_group, Treatment(reference=""Diabetes""))[T.Musculoskeletal]",0.9251429870683368,2.5222288806888358,0.899799444133356,7.070062743490673,0.07854467932875035
+"C(a1c_group, Treatment(reference=""Not measured""))[T.Normal/near-normal measured]:C(diag1_group, Treatment(reference=""Diabetes""))[T.Musculoskeletal]",-0.08776588262708422,0.915975297352821,0.5289750511233137,1.5861064592345022,0.7540511028936377
+"C(a1c_group, Treatment(reference=""Not measured""))[T.High, medication changed]:C(diag1_group, Treatment(reference=""Diabetes""))[T.Neoplasms]",-0.15156627541932688,0.8593609258798276,0.29783004296271887,2.4796061323520573,0.7792183495466493
+"C(a1c_group, Treatment(reference=""Not measured""))[T.High, medication not changed]:C(diag1_group, Treatment(reference=""Diabetes""))[T.Neoplasms]",0.8703778472443746,2.3878129116221998,0.6650362165114599,8.573443610061554,0.1820326019249452
+"C(a1c_group, Treatment(reference=""Not measured""))[T.Normal/near-normal measured]:C(diag1_group, Treatment(reference=""Diabetes""))[T.Neoplasms]",0.16131265291325586,1.1750522949113242,0.6479834513018845,2.1308382073682037,0.5952856918567371
+"C(a1c_group, Treatment(reference=""Not measured""))[T.High, medication changed]:C(diag1_group, Treatment(reference=""Diabetes""))[T.Other]",0.25115505001712896,1.2855093871323389,0.8614557576586247,1.9183044163484755,0.21878851902416263
+"C(a1c_group, Treatment(reference=""Not measured""))[T.High, medication not changed]:C(diag1_group, Treatment(reference=""Diabetes""))[T.Other]",0.718507629162891,2.0513695210826257,1.1563453554246352,3.639152345175848,0.014024517755678707
+"C(a1c_group, Treatment(reference=""Not measured""))[T.Normal/near-normal measured]:C(diag1_group, Treatment(reference=""Diabetes""))[T.Other]",-0.11980481351845883,0.8870935684925487,0.6179145353298088,1.273533723949092,0.5160979519194264
+"C(a1c_group, Treatment(reference=""Not measured""))[T.High, medication changed]:C(diag1_group, Treatment(reference=""Diabetes""))[T.Respiratory]",0.3416748649360028,1.4073026596807623,0.895772236593153,2.2109423523516307,0.13823084579840644
+"C(a1c_group, Treatment(reference=""Not measured""))[T.High, medication not changed]:C(diag1_group, Treatment(reference=""Diabetes""))[T.Respiratory]",0.4694575913889537,1.599126577911613,0.8327707891108084,3.070719873488556,0.15846763534209674
+"C(a1c_group, Treatment(reference=""Not measured""))[T.Normal/near-normal measured]:C(diag1_group, Treatment(reference=""Diabetes""))[T.Respiratory]",-0.5154418767403973,0.5972366313270165,0.395168303113551,0.9026320962193869,0.014440687419020942
+time_in_hospital,0.031104389696890236,1.0315931859659722,1.0224794712588094,1.0407881343781609,6.4197882606518974e-12

@@ -1,0 +1,6 @@
+step,rows,columns
+Raw data,101766,50
+Dropped weight and payer_code,101766,48
+Removed death/hospice discharge cases,99343,48
+Removed Unknown/Invalid gender,99340,48
+Kept first encounter per patient,69987,48
