@@ -1,0 +1,34 @@
+Variable,Category,Number of encounters,% of population,Readmitted: Number of encounters,Readmitted: % in group
+HbA1c,No test was performed,57141,81.6,5206,9.1
+HbA1c,"High, medication changed",4058,5.8,348,8.6
+HbA1c,"High, medication not changed",2181,3.1,161,7.4
+HbA1c,Normal result of the test,6607,9.4,570,8.6
+Gender,Female,37239,53.2,3365,9.0
+Gender,Male,32748,46.8,2920,8.9
+Discharge disposition,Home,44320,63.3,3079,6.9
+Discharge disposition,Other,25667,36.7,3206,12.5
+Admission source,Emergency room,37271,53.3,3452,9.3
+Admission source,Physician/clinic referral,21748,31.1,1873,8.6
+Admission source,Other,10968,15.7,960,8.8
+Specialty of the admitting physician,Internal Medicine,10641,15.2,1039,9.8
+Specialty of the admitting physician,Cardiology,4207,6.0,303,7.2
+Specialty of the admitting physician,Surgery,3594,5.1,286,8.0
+Specialty of the admitting physician,Family/General Practice,4978,7.1,485,9.7
+Specialty of the admitting physician,Missing,33652,48.1,3110,9.2
+Specialty of the admitting physician,Other,12915,18.5,1062,8.2
+Primary diagnosis,Circulatory,21389,30.6,2070,9.7
+Primary diagnosis,Diabetes,5748,8.2,524,9.1
+Primary diagnosis,Respiratory,9491,13.6,693,7.3
+Primary diagnosis,Digestive,6488,9.3,520,8.0
+Primary diagnosis,Injury,4694,6.7,507,10.8
+Primary diagnosis,Musculoskeletal,4064,5.8,341,8.4
+Primary diagnosis,Genitourinary,3441,4.9,309,9.0
+Primary diagnosis,Neoplasms,2538,3.6,230,9.1
+Primary diagnosis,Other,12134,17.3,1091,9.0
+Race,AfricanAmerican,12627,18.0,1095,8.7
+Race,Caucasian,52305,74.7,4807,9.2
+Race,Other,3138,4.5,242,7.7
+Race,Missing,1917,2.7,141,7.4
+Age,<=30,1808,2.6,112,6.2
+Age,30-60,21871,31.3,1574,7.2
+Age,>60,46308,66.2,4599,9.9
