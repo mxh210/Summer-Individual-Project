@@ -1,4 +1,5 @@
 hba1c_group,encounters,population_percent,readmitted,readmission_rate
-"High, med changed",4058,5.8,348,8.6
-"High, med not changed",2181,3.1,161,7.4
-Normal,63748,91.1,5776,9.1
+"High, medication changed",4058,5.8,348,8.6
+"High, medication not changed",2181,3.1,161,7.4
+No test was performed,57141,81.6,5206,9.1
+Normal result of the test,6607,9.4,570,8.6
