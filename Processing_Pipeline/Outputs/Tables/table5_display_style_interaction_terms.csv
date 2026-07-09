@@ -9,16 +9,6 @@ Age,"[60, 100)",Medical specialty,General Practice,0.075,0.676
 ,,,Missing,-1.450,0.091
 ,,,Other,-2.395*,0.006
 ,,,Surgery,-2.964,0.026
-,"[60, 100)",,General Practice,0.075,0.676
-,,,Internal Medicine,-0.003,0.987
-,,,Missing,-0.082,0.579
-,,,Other,-0.107,0.499
-,,,Surgery,-0.144,0.466
-,<30,,General Practice,-2.478,0.013
-,,,Internal Medicine,-2.002,0.026
-,,,Missing,-1.450,0.091
-,,,Other,-2.395*,0.006
-,,,Surgery,-2.964,0.026
 Diagnosis,Circulatory,Discharge,Other,-0.021,0.849
 ,Digestive,,Other,0.028,0.846
 ,Genitourinary,,Other,-0.184,0.248
