@@ -1,0 +1,41 @@
+hba1c_group,primary_diagnosis,discharge_group,race_group,admission_source_group,medical_specialty_group,age_group,time_in_hospital,predicted_probability,ci_lower,ci_upper
+No test was performed,Diabetes,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.06900727785291381,0.05221845685616188,0.0906774682741796
+Normal result of the test,Diabetes,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.06972763674811965,0.048367002744985024,0.09953520376973135
+"High, medication changed",Diabetes,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.04756625261004973,0.033307999483434166,0.06750187959530042
+"High, medication not changed",Diabetes,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.04179860079343465,0.025928789220502013,0.06671631219498718
+No test was performed,Other,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.056165108182193196,0.04307509703389977,0.07292985195664144
+Normal result of the test,Other,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.0527554562593772,0.038328364022232116,0.07220528103301842
+"High, medication changed",Other,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.04976126986462476,0.0341846193929753,0.07190717664022966
+"High, medication not changed",Other,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.06238366017127347,0.03995004360588041,0.09615300526360553
+No test was performed,Digestive,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.05650062380615221,0.04302670563463134,0.07386824001033172
+Normal result of the test,Digestive,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.05305948549149551,0.03516982856214923,0.07930105124121795
+"High, medication changed",Digestive,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.06306474324561999,0.03728048775153542,0.10474192164590587
+"High, medication not changed",Digestive,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.04106212117744717,0.019548599297033592,0.08421789678836386
+No test was performed,Respiratory,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.049366272531960874,0.03775485621224066,0.0643100861415176
+Normal result of the test,Respiratory,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.031072888132461614,0.02136941569742975,0.04498001770383728
+"High, medication changed",Respiratory,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.0462138803414804,0.030318517091417464,0.06984261033914307
+"High, medication not changed",Respiratory,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.041870397024044194,0.024335525159270115,0.07111897692077339
+No test was performed,Circulatory,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.06618689710816035,0.051843542934147134,0.08414639402478043
+Normal result of the test,Circulatory,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.06338996163892215,0.04815742824979322,0.08302040927436134
+"High, medication changed",Circulatory,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.07613563657344184,0.05720089077133504,0.10066894097682753
+"High, medication not changed",Circulatory,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.06562886738786833,0.04683218499333603,0.09124761201760394
+No test was performed,Diabetes,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.06900727785291381,0.05221845685616188,0.0906774682741796
+Normal result of the test,Diabetes,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.06972763674811965,0.048367002744985024,0.09953520376973135
+"High, medication changed",Diabetes,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.04756625261004973,0.033307999483434166,0.06750187959530042
+"High, medication not changed",Diabetes,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.04179860079343465,0.025928789220502013,0.06671631219498718
+No test was performed,Genitourinary,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.06252765411370129,0.04647283179750737,0.08364236024509761
+Normal result of the test,Genitourinary,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.07715322275229032,0.05028401025834761,0.11661699039431733
+"High, medication changed",Genitourinary,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.06538635227208449,0.037223945752520714,0.1123687247778932
+"High, medication not changed",Genitourinary,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.027008913844828276,0.008375442188843427,0.08360261915032806
+No test was performed,Injury,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.05765697862474835,0.042612509343537094,0.07758252083458914
+Normal result of the test,Injury,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.03275747953267982,0.020024058953302778,0.05314900457383062
+"High, medication changed",Injury,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.03418579110827737,0.017035824361439866,0.06741652172013116
+"High, medication not changed",Injury,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.045518984855748054,0.019072796591789704,0.10472047442828704
+No test was performed,Musculoskeletal,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.03800712545745008,0.02667197820709723,0.05389279261178597
+Normal result of the test,Musculoskeletal,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.03491670927848718,0.02017288421334218,0.05977897159053733
+"High, medication changed",Musculoskeletal,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.05565382146692856,0.028167278052279834,0.10700920677977757
+"High, medication not changed",Musculoskeletal,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.04928344115419434,0.018737010686742137,0.12336796066804005
+No test was performed,Neoplasms,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.06574906232813915,0.04851048792592276,0.08854343801840235
+Normal result of the test,Neoplasms,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.08296284364928765,0.048003320548044105,0.13964772328473293
+"High, medication changed",Neoplasms,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.04087214945584047,0.014588601098201643,0.10925902367547144
+"High, medication not changed",Neoplasms,Home,AfricanAmerican,Emergency room,Cardiology,30-60,4.273336476774258,0.07856843576659948,0.0243374834173646,0.22568861035659477

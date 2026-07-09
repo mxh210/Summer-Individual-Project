@@ -1,0 +1,34 @@
+Attribute name,Value,Estimate,P value,Significant at 0.01
+Intercept,*,-3.156,<2e-16,Yes
+Discharge,Home,Reference,,
+Discharge,Other,0.282,0.148,No
+Race,African American,Reference,,
+Race,Caucasian,0.013,0.781,No
+Race,Missing,-0.317,0.018,No
+Race,Other*,-0.298,0.004,Yes
+Admission,Emergency,Reference,,
+Admission,Other*,-0.132,0.001,Yes
+Admission,referral,-0.018,0.577,No
+Medical specialty,Cardiology,Reference,,
+Medical specialty,General practice,0.397,0.031,No
+Medical specialty,Internal medicine,0.388,0.018,No
+Medical specialty,Missing*,0.409,0.006,Yes
+Medical specialty,Other,0.288,0.077,No
+Medical specialty,Surgery,0.383,0.064,No
+Time in hospital,*,0.130,<0.001,Yes
+Age,"[30, 60)",Reference,,
+Age,"[60, 100)",0.253,0.071,No
+Age,<30,1.834,0.030,No
+Diagnosis,Diabetes,Reference,,
+Diagnosis,Circulatory,0.102,0.331,No
+Diagnosis,Digestive,-0.068,0.595,No
+Diagnosis,Genitourinary,-0.285,0.059,No
+Diagnosis,Injury,-0.007,0.959,No
+Diagnosis,Musculoskeletal*,-0.728,<0.001,Yes
+Diagnosis,Neoplasms,0.151,0.363,No
+Diagnosis,Other,0.026,0.819,No
+Diagnosis,Respiratory*,-0.321,0.008,Yes
+HbA1c,Not measured,Reference,,
+HbA1c,"High, changed*",-0.395,0.005,Yes
+HbA1c,"High, not changed",-0.530,0.014,No
+HbA1c,Normal,0.011,0.941,No

@@ -1,0 +1,34 @@
+Attribute name,Value,Estimate,P value,Significant at 0.01
+Intercept,*,-3.156,<2e-16,Yes
+Discharge,Home,Reference,,
+,Other,0.282,0.148,No
+Race,African American,Reference,,
+,Caucasian,0.013,0.781,No
+,Missing,-0.317,0.018,No
+,Other*,-0.298,0.004,Yes
+Admission,Emergency,Reference,,
+,Other*,-0.132,0.001,Yes
+,referral,-0.018,0.577,No
+Medical specialty,Cardiology,Reference,,
+,General practice,0.397,0.031,No
+,Internal medicine,0.388,0.018,No
+,Missing*,0.409,0.006,Yes
+,Other,0.288,0.077,No
+,Surgery,0.383,0.064,No
+Time in hospital,*,0.130,<0.001,Yes
+Age,"[30, 60)",Reference,,
+,"[60, 100)",0.253,0.071,No
+,<30,1.834,0.030,No
+Diagnosis,Diabetes,Reference,,
+,Circulatory,0.102,0.331,No
+,Digestive,-0.068,0.595,No
+,Genitourinary,-0.285,0.059,No
+,Injury,-0.007,0.959,No
+,Musculoskeletal*,-0.728,<0.001,Yes
+,Neoplasms,0.151,0.363,No
+,Other,0.026,0.819,No
+,Respiratory*,-0.321,0.008,Yes
+HbA1c,Not measured,Reference,,
+,"High, changed*",-0.395,0.005,Yes
+,"High, not changed",-0.530,0.014,No
+,Normal,0.011,0.941,No
