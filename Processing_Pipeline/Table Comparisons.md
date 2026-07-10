@@ -13,3 +13,6 @@ Table 4 was reproduced closely. The estimated coefficients were generally very s
 
 ## Table 5 - Coefficients of the interaction terms estimated from the final logistic regression model
 Very similar, especially significance wise. The orignal table seems to include `Age` twice by accident.
+
+## Overall conclusion
+Our reproduced results are very close to the original study. The cohort size, diagnosis distributions, regression coefficients, and interaction patterns are broadly consistent with the paper. Small differences remain in a few counts and borderline p-values, but these do not change the main conclusion about HbA1c measurement and readmission.
