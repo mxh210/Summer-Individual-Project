@@ -1,65 +1,65 @@
-Attribute name,Value,Attribute name 2,Value 2,Estimate,P value
-Age,"[60, 100)",Medical specialty,General Practice,0.075,0.676
-,,,Internal Medicine,-0.003,0.987
-,,,Missing,-0.082,0.579
-,,,Other,-0.107,0.499
-,,,Surgery,-0.144,0.466
-,<30,,General Practice,-2.478,0.013
-,,,Internal Medicine,-2.002,0.026
-,,,Missing,-1.450,0.091
-,,,Other,-2.395*,0.006
-,,,Surgery,-2.964,0.026
-Diagnosis,Circulatory,Discharge,Other,-0.021,0.849
-,Digestive,,Other,0.028,0.846
-,Genitourinary,,Other,-0.184,0.248
-,Injury,,Other,0.285,0.056
-,Musculoskelet,,Other,0.423,0.016
-,Neoplasms,,Other,-0.159,0.375
-,Other,,Other,0.206,0.083
-,Respiratory,,Other,0.109,0.402
-Race,Caucasian,,Other,0.019,0.793
-,Missing,,Other,0.286,0.129
-,Other,,Other,0.497*,<0.001
-Discharge,,Time in hospital,,-0.028*,0.002
-Medical specialty,General Practice,Discharge,Other,0.325,0.071
-,Internal Medicine,,Other,0.197,0.231
-,Missing,,Other,0.246,0.111
-,Other,,Other,0.396,0.017
-,Surgery,,Other,0.684*,<0.001
-Time in hospital,,Medical specialty,General Practice,-0.062,0.017
-,,,Internal Medicine,-0.037,0.108
-,,,Missing,-0.058*,0.007
-,,,Other,-0.054,0.022
-,,,Surgery,-0.107*,<0.001
-,,Diagnosis,Circulatory,-0.034,0.042
-,,,Digestive,-0.034,0.122
-,,,Genitourinary,0.042,0.094
-,,,Injury,-0.043,0.055
-,,,Musculoskelet,0.023,0.406
-,,,Neoplasms,-0.047,0.074
-,,,Other,-0.057*,0.001
-,,,Respiratory,-0.008,0.681
-HbA1c,"High, changed",,Circulatory,0.546*,0.001
-,,,Digestive,0.512,0.077
-,,,Genitourinary,0.443,0.150
-,,,Injury,-0.152,0.673
-,,,Musculoskelet,0.795,0.028
-,,,Neoplasms,-0.107,0.844
-,,,Other,0.267,0.193
-,,,Respiratory,0.326,0.159
-,"High, not changed",,Circulatory,0.521,0.041
-,,,Digestive,0.195,0.649
-,,,Genitourinary,-0.346,0.584
-,,,Injury,0.281,0.562
-,,,Musculoskelet,0.802,0.131
-,,,Neoplasms,0.722,0.269
-,,,Other,0.642,0.029
-,,,Respiratory,0.358,0.286
-,Normal,,Circulatory,-0.057,0.735
-,,,Digestive,-0.078,0.740
-,,,Genitourinary,0.215,0.383
-,,,Injury,-0.603,0.020
-,,,Musculoskelet,-0.099,0.725
-,,,Neoplasms,0.240,0.434
-,,,Other,-0.077,0.676
-,,,Respiratory,-0.493,0.020
+Attribute name,Value,Attribute name 2,Value 2,Estimate,P value,Significant at 0.01
+Age,"[60, 100)",Medical specialty,General Practice,0.075,0.676,No
+,,,Internal Medicine,-0.003,0.987,No
+,,,Missing,-0.082,0.579,No
+,,,Other,-0.107,0.499,No
+,,,Surgery,-0.144,0.466,No
+,<30,,General Practice,-2.478,0.013,No
+,,,Internal Medicine,-2.002,0.026,No
+,,,Missing,-1.450,0.091,No
+,,,Other,-2.395*,0.006,Yes
+,,,Surgery,-2.964,0.026,No
+Diagnosis,Circulatory,Discharge,Other,-0.021,0.849,No
+,Digestive,,Other,0.028,0.846,No
+,Genitourinary,,Other,-0.184,0.248,No
+,Injury,,Other,0.285,0.056,No
+,Musculoskelet,,Other,0.423,0.016,No
+,Neoplasms,,Other,-0.159,0.375,No
+,Other,,Other,0.206,0.083,No
+,Respiratory,,Other,0.109,0.402,No
+Race,Caucasian,,Other,0.019,0.793,No
+,Missing,,Other,0.286,0.129,No
+,Other,,Other,0.497*,<0.001,Yes
+Discharge,,Time in hospital,,-0.028*,0.002,Yes
+Medical specialty,General Practice,Discharge,Other,0.325,0.071,No
+,Internal Medicine,,Other,0.197,0.231,No
+,Missing,,Other,0.246,0.111,No
+,Other,,Other,0.396,0.017,No
+,Surgery,,Other,0.684*,<0.001,Yes
+Time in hospital,,Medical specialty,General Practice,-0.062,0.017,No
+,,,Internal Medicine,-0.037,0.108,No
+,,,Missing,-0.058*,0.007,Yes
+,,,Other,-0.054,0.022,No
+,,,Surgery,-0.107*,<0.001,Yes
+,,Diagnosis,Circulatory,-0.034,0.042,No
+,,,Digestive,-0.034,0.122,No
+,,,Genitourinary,0.042,0.094,No
+,,,Injury,-0.043,0.055,No
+,,,Musculoskelet,0.023,0.406,No
+,,,Neoplasms,-0.047,0.074,No
+,,,Other,-0.057*,0.001,Yes
+,,,Respiratory,-0.008,0.681,No
+HbA1c,"High, changed",,Circulatory,0.546*,0.001,Yes
+,,,Digestive,0.512,0.077,No
+,,,Genitourinary,0.443,0.150,No
+,,,Injury,-0.152,0.673,No
+,,,Musculoskelet,0.795,0.028,No
+,,,Neoplasms,-0.107,0.844,No
+,,,Other,0.267,0.193,No
+,,,Respiratory,0.326,0.159,No
+,"High, not changed",,Circulatory,0.521,0.041,No
+,,,Digestive,0.195,0.649,No
+,,,Genitourinary,-0.346,0.584,No
+,,,Injury,0.281,0.562,No
+,,,Musculoskelet,0.802,0.131,No
+,,,Neoplasms,0.722,0.269,No
+,,,Other,0.642,0.029,No
+,,,Respiratory,0.358,0.286,No
+,Normal,,Circulatory,-0.057,0.735,No
+,,,Digestive,-0.078,0.740,No
+,,,Genitourinary,0.215,0.383,No
+,,,Injury,-0.603,0.020,No
+,,,Musculoskelet,-0.099,0.725,No
+,,,Neoplasms,0.240,0.434,No
+,,,Other,-0.077,0.676,No
+,,,Respiratory,-0.493,0.020,No
