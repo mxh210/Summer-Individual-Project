@@ -1,0 +1,2 @@
+model,best_n_estimators,best_max_depth,best_min_samples_split,best_min_samples_leaf,best_max_features,best_cv_auprc
+Random Forest,500,,30,5,0.5,0.1695000485778703
