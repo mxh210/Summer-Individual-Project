@@ -8,7 +8,7 @@ Musculoskeletal,710-739,4064,5.8,Diseases of the musculoskeletal system and conn
 Genitourinary,"580-629, 788",3441,4.9,Diseases of the genitourinary system
 Neoplasms,140-239,2538,3.6,Neoplasms
 "Other
-(17.3%)","780, 781, 784, 790-799",1763,2.5,"Other symptoms, signs, and ill-defined conditions"
+(17.3%)","780, 781, 783, 784, 789, 790-799",2144,3.1,"Other symptoms, signs, and ill-defined conditions"
 ,"240-279, without 250",1851,2.6,"Endocrine, nutritional, and metabolic diseases and immunity disorders, without diabetes"
 ,"680-709, 782",1843,2.6,Diseases of the skin and subcutaneous tissue
 ,001-139,1685,2.4,Infectious and parasitic diseases
@@ -19,4 +19,3 @@ Neoplasms,140-239,2538,3.6,Neoplasms
 ,630-679,586,0.8,"Complications of pregnancy, childbirth, and the puerperium"
 ,360-389,219,0.3,Diseases of the sense organs
 ,740-759,41,0.1,Congenital anomalies
-,Other/unclassified,381,0.5,Other or unclassified diagnosis
