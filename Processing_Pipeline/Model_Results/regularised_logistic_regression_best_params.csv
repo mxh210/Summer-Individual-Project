@@ -1,2 +1,2 @@
 model,best_penalty,best_C,best_cv_auprc
-Regularised Logistic Regression,l1,0.1,0.15389032631288407
+Regularised Logistic Regression,l1,0.01,0.14581811135969938
