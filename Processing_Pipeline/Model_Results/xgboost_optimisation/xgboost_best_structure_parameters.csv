@@ -1,0 +1,10 @@
+parameter,selected_value
+subsample,0.6
+scale_pos_weight,6.0
+reg_lambda,20.0
+reg_alpha,1.0
+min_child_weight,10
+max_depth,2
+max_delta_step,1
+gamma,1.0
+colsample_bytree,1.0
