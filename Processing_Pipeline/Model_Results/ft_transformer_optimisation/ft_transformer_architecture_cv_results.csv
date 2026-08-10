@@ -1,0 +1,3 @@
+candidate,residual_dropout,n_blocks,ffn_dropout,ffn_d_hidden_multiplier,d_block,attention_n_heads,attention_dropout,mean_validation_auprc,std_validation_auprc,mean_validation_auroc,mean_validation_brier_score,median_best_epoch,mean_best_epoch,elapsed_seconds
+2,0.1,3,0.0,1.3333333333333333,64,8,0.2,0.14973660822666784,0.005740032536491248,0.6268134330411413,0.0803180202074365,6,6.666666666666667,70.02138495445251
+1,0.0,2,0.2,2.0,128,4,0.1,0.1496291027192911,0.005214599977724147,0.629113820334299,0.08023240669597453,8,7.666666666666667,76.29194021224976
