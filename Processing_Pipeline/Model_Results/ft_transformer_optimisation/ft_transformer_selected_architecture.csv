@@ -1,2 +1,2 @@
 n_blocks,d_block,attention_n_heads,attention_dropout,ffn_d_hidden_multiplier,ffn_dropout,residual_dropout
-3,64,8,0.2,1.3333333333333333,0.0,0.1
+2,96,4,0.3,1.3333333333333333,0.2,0.1
