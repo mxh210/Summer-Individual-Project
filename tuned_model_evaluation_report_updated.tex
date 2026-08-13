@@ -1,0 +1,198 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\setlist[itemize]{leftmargin=1.5em,itemsep=0.2em,topsep=0.2em}
+
+\title{Tuned Model Evaluation for 30-Day Hospital Readmission Prediction}
+\author{Xiaohan Mu}
+\date{August 2026}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+
+This short report summarises the model optimisation stage for predicting 30-day hospital readmission among patients with diabetes. Six tuned models were evaluated: Regularised Logistic Regression, Decision Tree, Random Forest, XGBoost, CatBoost, and FT-Transformer. CatBoost and FT-Transformer were added after the initial model comparison to test whether more advanced handling of categorical variables or a deep-learning architecture could produce a meaningful improvement over the earlier models.
+
+The tuning stage had two related aims. First, model hyperparameters were selected to improve the ability to distinguish patients who would and would not be readmitted. Second, after each model had been fixed, a probability threshold was selected to achieve at least 80\% recall on the validation set while keeping the false-positive rate as low as possible.
+
+The outcome is strongly imbalanced. In the final test set, 1,257 of 13,998 encounters (8.98\%) were readmitted within 30 days. Accuracy alone is therefore not an appropriate optimisation target because a model predicting no readmissions would already obtain approximately 91\% accuracy while identifying none of the readmitted patients.
+
+\section{Evaluation framework}
+
+The same cleaned dataset and the same 18 predictive variables were used across all six tuned models. The data were stratified into three main subsets:
+
+\begin{itemize}
+    \item \textbf{Model-training set:} 60\% of the full dataset, used for hyperparameter selection and model fitting.
+    \item \textbf{Threshold-validation set:} 20\%, used only after the model settings were fixed to select the classification threshold.
+    \item \textbf{Final test set:} 20\%, used once after both the model specification and threshold had been fixed.
+\end{itemize}
+
+Hyperparameters were generally selected using five-fold stratified cross-validation within the model-training data. XGBoost, CatBoost, and FT-Transformer also used an additional internal split within the model-training portion to select training duration or early-stopping settings. After these choices were made, the final selected model was refitted using the complete 60\% model-training set.
+
+The threshold-selection rule was kept consistent across the models. Predicted probabilities were generated for the 20\% validation set, thresholds reaching at least 0.80 recall were retained, and the eligible threshold with the lowest false-positive rate (FPR) was selected. The fixed model and fixed threshold were then applied to the untouched test set.
+
+\subsection{Why AUPRC and AUROC were prioritised}
+
+AUPRC was used as the main metric for hyperparameter selection because the positive readmission class represents only about 9\% of the data. AUPRC summarises the trade-off between precision and recall across possible thresholds and therefore focuses directly on the model's ability to identify the minority readmission class without producing excessive false positives. The no-skill AUPRC is approximately the positive-class prevalence, about 0.0898 in this test set, so values around 0.15 represent improvement over random ranking but still indicate a difficult prediction problem.
+
+AUROC was used as a complementary threshold-independent measure of discrimination. It measures how well a model ranks readmitted patients above non-readmitted patients across all possible thresholds. AUROC is useful for comparing overall class separation, but in an imbalanced problem it can appear relatively favourable even when precision remains low because the negative class is much larger.
+
+Using threshold-independent metrics during hyperparameter selection also separates two different decisions. AUPRC and AUROC are used to judge the quality of the probability ranking produced by the model itself, while recall, precision, specificity, FPR, and F2 are used later to judge the practical behaviour at the selected operating threshold. AUPRC was therefore treated as the primary tuning metric, with AUROC used as a secondary check rather than as the only selection criterion.
+
+\section{Model-specific tuning}
+
+\subsection{Regularised Logistic Regression}
+
+The Logistic Regression search varied regularisation strength ($C$), the balance between L1 and L2 regularisation (\texttt{l1\_ratio}), and whether class weighting was applied. Two specifications were compared: an additive model containing the existing predictors and a second model containing an HbA1c group $\times$ primary-diagnosis interaction.
+
+The final selected model was the additive specification with:
+
+\begin{itemize}
+    \item $C = 0.01$;
+    \item \texttt{l1\_ratio = 0.0}, corresponding to L2 regularisation;
+    \item \texttt{class\_weight = None}.
+\end{itemize}
+
+Its best cross-validation AUPRC was 0.1515. Although the interaction specification achieved a slightly higher cross-validation AUPRC, it produced a worse operating point on the separate validation set at the required recall level. The additive model was therefore retained. Its validation-selected threshold was 0.0674.
+
+\subsection{Decision Tree}
+
+The Decision Tree search varied the splitting criterion, maximum depth, minimum split and leaf sizes, number of features considered at each split, maximum leaf nodes, class weighting, and cost-complexity pruning.
+
+The selected tree used \texttt{criterion = gini}, \texttt{max\_depth = 12}, \texttt{min\_samples\_split = 100}, \texttt{min\_samples\_leaf = 400}, \texttt{max\_features = 0.75}, \texttt{max\_leaf\_nodes = 127}, \texttt{class\_weight = balanced}, and \texttt{ccp\_alpha = 0}. Its best cross-validation AUPRC was 0.1398. The large minimum leaf size indicates that relatively strong control of tree complexity was preferred. The validation-selected threshold was 0.4005.
+
+\subsection{Random Forest}
+
+Random Forest tuning varied the number and complexity of trees, split and leaf sizes, feature sampling, observation sampling, splitting criterion, and class weighting.
+
+The selected forest used 500 trees, \texttt{max\_depth = 8}, \texttt{min\_samples\_split = 2}, \texttt{min\_samples\_leaf = 5}, \texttt{max\_features = log2}, \texttt{max\_samples = None}, \texttt{criterion = gini}, and \texttt{class\_weight = None}. Its best cross-validation AUPRC was 0.1521. The validation-selected threshold was 0.0704.
+
+\subsection{XGBoost}
+
+XGBoost was tuned in two stages. A randomized cross-validation search first selected tree structure, sampling, regularisation, and positive-class weighting. The selected structural settings included \texttt{max\_depth = 2}, \texttt{min\_child\_weight = 10}, \texttt{subsample = 0.6}, \texttt{colsample\_bytree = 1.0}, \texttt{gamma = 1}, \texttt{reg\_alpha = 1}, \texttt{reg\_lambda = 20}, \texttt{max\_delta\_step = 1}, and \texttt{scale\_pos\_weight = 6}. The best structural cross-validation AUPRC was 0.1508.
+
+An internal early-stopping stage then selected a learning rate of 0.1 and 196 boosting rounds. The validation-selected threshold was 0.2905.
+
+\section{Additional advanced model experiments}
+
+\subsection{CatBoost}
+
+CatBoost was added as an alternative boosting approach because it handles categorical predictors directly rather than requiring one-hot encoding. The same 18 predictors and the same final train-validation-test allocation were retained, so any performance difference reflects the modelling approach rather than additional information.
+
+The structural search varied tree depth, L2 regularisation, random strength, numeric border count, categorical interaction complexity, subsampling, and positive-class weighting. The selected settings were \texttt{depth = 4}, \texttt{l2\_leaf\_reg = 5}, \texttt{random\_strength = 1}, \texttt{border\_count = 64}, \texttt{max\_ctr\_complexity = 4}, \texttt{subsample = 1.0}, and \texttt{scale\_pos\_weight = 2}. The best structural cross-validation AUPRC was 0.1522.
+
+An internal early-stopping stage selected a learning rate of 0.1 and 155 boosting rounds. The validation-selected threshold was 0.1247.
+
+\subsection{FT-Transformer}
+
+FT-Transformer was added to test whether a neural-network architecture designed for tabular data could extract additional predictive signal from the same 18 predictors. Categorical variables were represented using learned embeddings, numerical variables were median-imputed and standardised using training data only, and self-attention was then used to model relationships between feature tokens.
+
+The architecture search selected two Transformer blocks with a token dimension of 96, four attention heads, attention dropout of 0.3, feed-forward dropout of 0.2, residual dropout of 0.1, and a feed-forward hidden multiplier of approximately 1.33. The architecture cross-validation AUPRC was 0.1538.
+
+A second training search selected a learning rate of 0.0005, weight decay of $10^{-6}$, batch size of 1,024, positive-class weight of 2, and five training epochs. Its validation-selected threshold was 0.1069.
+
+\section{Final test-set results}
+
+Table~\ref{tab:test_results} summarises the final held-out test performance of all six tuned models. AUPRC, AUROC, and Brier score are calculated directly from predicted probabilities and are independent of the chosen classification threshold. Recall, precision, specificity, FPR, F2, and the proportion of patients flagged describe the behaviour at the validation-selected threshold.
+
+\begin{table}[htbp]
+\centering
+\caption{Final held-out test performance of all tuned models.}
+\label{tab:test_results}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lrrrrrrrrrr}
+\toprule
+Model & Thr. & AUPRC & AUROC & Recall & Prec. & Spec. & FPR & F2 & Flagged & Brier \\
+\midrule
+Reg. Logistic Regression & 0.0674 & 0.1499 & 0.6374 & 0.8107 & 0.1108 & 0.3581 & 0.6419 & 0.3582 & 0.6570 & 0.0800 \\
+Decision Tree             & 0.4005 & 0.1371 & 0.6278 & \textbf{0.8282} & 0.1063 & 0.3134 & 0.6866 & 0.3513 & 0.6993 & 0.2357 \\
+Random Forest             & 0.0704 & 0.1526 & 0.6445 & 0.8115 & 0.1113 & 0.3610 & 0.6390 & 0.3594 & 0.6545 & \textbf{0.0800} \\
+XGBoost                   & 0.2905 & 0.1513 & \textbf{0.6456} & 0.8162 & 0.1122 & 0.3630 & 0.6370 & 0.3620 & 0.6531 & 0.1548 \\
+CatBoost                  & 0.1247 & 0.1516 & 0.6421 & 0.8170 & \textbf{0.1134} & \textbf{0.3695} & \textbf{0.6305} & \textbf{0.3645} & \textbf{0.6472} & 0.0857 \\
+FT-Transformer            & 0.1069 & \textbf{0.1528} & 0.6373 & 0.7995 & 0.1104 & 0.3643 & 0.6357 & 0.3556 & 0.6505 & 0.0852 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}
+
+No single model clearly dominated across all evaluation criteria. FT-Transformer achieved the highest test AUPRC at 0.1528, but the improvement over Random Forest at 0.1526 was only approximately 0.0002. This difference is too small to suggest a meaningful advantage from the considerably more complex neural-network architecture. FT-Transformer also produced a lower AUROC than Random Forest and XGBoost and achieved test recall of 79.95\%. The 80\% requirement was met on the validation data used for threshold selection, but the small drop on the unseen test set illustrates normal validation-to-test variation.
+
+XGBoost achieved the highest AUROC at 0.6456, indicating the strongest overall ranking according to the ROC measure. Random Forest remained very close with an AUROC of 0.6445 while also producing one of the strongest AUPRC values.
+
+CatBoost produced the most favourable threshold-dependent operating point. It achieved 81.7\% recall with the highest precision (11.3\%), highest specificity (37.0\%), lowest FPR (63.0\%), highest F2-score (0.3645), and lowest proportion of patients flagged (64.7\%) among the six models. These improvements are directionally useful, but they remain small in absolute terms.
+
+The Decision Tree achieved the highest recall at 82.8\%, but this required the highest FPR (68.7\%) and the largest proportion of patients flagged (69.9\%). It also had the lowest AUPRC and AUROC, making it the weakest candidate overall despite its high recall.
+
+\section{Main interpretation}
+
+The most important result is the similarity between models with very different levels of complexity. Regularised Logistic Regression, Random Forest, XGBoost, CatBoost, and FT-Transformer all produced test AUPRC values close to 0.15, while their AUROC values remained around 0.64. Increasing complexity from a regularised linear model to bagged trees, gradient boosting, native categorical boosting, and a tabular Transformer therefore did not produce a substantial increase in discrimination.
+
+A similar pattern is visible at the selected high-recall operating point. To identify approximately 80--82\% of true readmissions, the stronger models still had to flag approximately 65\% of the whole test population. Even CatBoost, which produced the lowest FPR, incorrectly flagged about 63\% of patients who were not readmitted. This high false-positive burden is therefore not solved simply by changing the modelling algorithm.
+
+The consistency across these different approaches suggests that performance may be constrained more by the predictive information available in the current 18 variables than by model choice alone. More complex models may be learning broadly the same limited signal rather than uncovering a substantially stronger separation between the two outcome groups.
+
+\section{Comparison with the initial baseline models}
+
+Table~\ref{tab:baseline_comparison} compares the four models that were also present in the original baseline notebook. CatBoost and FT-Transformer are not included in this table because they were introduced directly as additional tuned models and therefore do not have directly comparable baseline configurations.
+
+\begin{table}[htbp]
+\centering
+\caption{Descriptive comparison between the initial baseline models and tuned versions.}
+\label{tab:baseline_comparison}
+\begin{tabular}{lrrrr}
+\toprule
+Model & Baseline AUPRC & Tuned AUPRC & Baseline recall & Tuned recall \\
+\midrule
+Reg. Logistic Regression & 0.1498 & 0.1499 & 0.5887 & 0.8107 \\
+Decision Tree             & 0.1341 & 0.1371 & 0.6452 & 0.8282 \\
+Random Forest             & 0.1410 & 0.1526 & 0.3644 & 0.8115 \\
+XGBoost                   & 0.1482 & 0.1513 & 0.6030 & 0.8162 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Random Forest showed the clearest increase in test AUPRC, from approximately 0.1410 to 0.1526. Decision Tree and XGBoost showed smaller increases, while the Regularised Logistic Regression AUPRC remained almost unchanged.
+
+The much larger increases in recall should not be interpreted as equivalent improvements in the underlying model. Recall depends on the classification threshold. The tuned workflow deliberately selected a threshold that prioritised reaching the 80\% validation recall target, which increased sensitivity but also substantially increased false positives. In contrast, AUPRC and AUROC help separate the model's underlying probability ranking from the later decision about where to place the classification threshold.
+
+This comparison is descriptive rather than a perfectly controlled estimate of the effect of tuning because the original baseline workflow and later optimisation workflow do not use exactly the same model-selection procedure. The later workflow should be preferred for final model comparison because it separates hyperparameter selection, threshold selection, and final test evaluation.
+
+\section{Initial calibration assessment}
+
+Brier score was recorded as an initial probability-quality measure, where lower values are better. The test-set readmission prevalence is approximately 0.0898. A model that predicts this prevalence for every patient would have a Brier score of approximately 0.0817.
+
+Regularised Logistic Regression and Random Forest produced the lowest Brier scores, both approximately 0.0800. FT-Transformer and CatBoost followed at 0.0852 and 0.0857. XGBoost and Decision Tree produced substantially higher Brier scores of 0.1548 and 0.2357.
+
+These results indicate that the raw probability outputs from Logistic Regression and Random Forest are currently more promising as absolute risk estimates. However, the Brier score reflects both calibration and discrimination and is not sufficient by itself to establish good calibration. A full calibration assessment should therefore add calibration curves and, where possible, calibration slope and intercept before predicted probabilities are interpreted as clinical risks.
+
+The result is also relevant to class weighting. Logistic Regression and Random Forest selected no additional positive-class weighting, whereas Decision Tree used balanced class weights, XGBoost selected \texttt{scale\_pos\_weight = 6}, and both CatBoost and FT-Transformer selected a positive-class weight of 2. Weighting can improve emphasis on the minority class while shifting the scale of predicted probabilities, so calibration and class-weight sensitivity should be considered together.
+
+\section{Provisional model choice and next steps}
+
+There is not yet enough evidence to identify one model as an unambiguous final winner. Different models lead on different aspects of performance:
+
+\begin{itemize}
+    \item \textbf{FT-Transformer} has the highest AUPRC, but only by a negligible margin over Random Forest and without a corresponding improvement in AUROC or the selected operating point.
+    \item \textbf{XGBoost} has the highest AUROC, but its Brier score is substantially poorer than Random Forest and Logistic Regression.
+    \item \textbf{CatBoost} produces the best current high-recall operating point, with the lowest FPR, highest precision, highest F2-score, and fewest patients flagged.
+    \item \textbf{Random Forest} combines near-best discrimination with the lowest Brier score and remains one of the strongest balanced candidates.
+    \item \textbf{Regularised Logistic Regression} remains surprisingly competitive given its much simpler and more interpretable structure.
+    \item \textbf{Decision Tree} is currently the weakest candidate overall.
+\end{itemize}
+
+At this stage, CatBoost and Random Forest appear to be particularly useful candidates for the final model comparison, with XGBoost retained as a close alternative. FT-Transformer does not currently provide enough improvement to justify its substantially greater complexity and computational cost.
+
+The next planned experiment is the class-weight sensitivity analysis requested after the main report, particularly for Regularised Logistic Regression and Random Forest because their hyperparameter searches selected no additional weight for the readmission class. This analysis should test whether deliberately increasing positive-class weight can reduce the false-positive cost required to maintain high recall, or whether it mainly shifts the probability scale without improving underlying discrimination.
+
+After class-weight sensitivity has been assessed, final model selection should consider three aspects together: threshold-independent discrimination (AUPRC and AUROC), behaviour at the clinically motivated operating point (recall, precision, specificity/FPR, F2, and proportion flagged), and calibration. Interpretability and subgroup performance can then be used as additional considerations before making any claim about practical healthcare use.
+
+\end{document}
