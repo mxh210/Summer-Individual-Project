@@ -13,7 +13,7 @@
 
 \title{Tuned Model Evaluation for 30-Day Hospital Readmission Prediction}
 \author{Xiaohan Mu}
-\date{August 2026}
+\date{}
 
 \begin{document}
 \maketitle
@@ -59,10 +59,10 @@ The final selected model was the additive specification with:
 \begin{itemize}
     \item $C = 0.01$;
     \item \texttt{l1\_ratio = 0.0}, corresponding to L2 regularisation;
-    \item \texttt{class\_weight = None}.
+    \item \texttt{class\_weight = \{0: 1, 1: 2\}}.
 \end{itemize}
 
-Its best cross-validation AUPRC was 0.1515. Although the interaction specification achieved a slightly higher cross-validation AUPRC, it produced a worse operating point on the separate validation set at the required recall level. The additive model was therefore retained. Its validation-selected threshold was 0.0674.
+Its best cross-validation AUPRC was 0.1516. Although the interaction specification achieved a slightly higher cross-validation AUPRC, it produced a worse operating point on the separate validation set at the required recall level. The additive model was therefore retained. Its validation-selected threshold was 0.1256.
 
 \subsection{Decision Tree}
 
@@ -113,7 +113,7 @@ Table~\ref{tab:test_results} summarises the final held-out test performance of a
 \toprule
 Model & Thr. & AUPRC & AUROC & Recall & Prec. & Spec. & FPR & F2 & Flagged & Brier \\
 \midrule
-Reg. Logistic Regression & 0.0674 & 0.1499 & 0.6374 & 0.8107 & 0.1108 & 0.3581 & 0.6419 & 0.3582 & 0.6570 & 0.0800 \\
+Reg. Logistic Regression & 0.1256 & 0.1497 & 0.6368 & 0.8003 & 0.1104 & 0.3638 & 0.6362 & 0.3557 & 0.6510 & 0.0860 \\
 Decision Tree             & 0.4005 & 0.1371 & 0.6278 & \textbf{0.8282} & 0.1063 & 0.3134 & 0.6866 & 0.3513 & 0.6993 & 0.2357 \\
 Random Forest             & 0.0704 & 0.1526 & 0.6445 & 0.8115 & 0.1113 & 0.3610 & 0.6390 & 0.3594 & 0.6545 & \textbf{0.0800} \\
 XGBoost                   & 0.2905 & 0.1513 & \textbf{0.6456} & 0.8162 & 0.1122 & 0.3630 & 0.6370 & 0.3620 & 0.6531 & 0.1548 \\
@@ -152,7 +152,7 @@ Table~\ref{tab:baseline_comparison} compares the four models that were also pres
 \toprule
 Model & Baseline AUPRC & Tuned AUPRC & Baseline recall & Tuned recall \\
 \midrule
-Reg. Logistic Regression & 0.1498 & 0.1499 & 0.5887 & 0.8107 \\
+Reg. Logistic Regression & 0.1498 & 0.1497 & 0.5887 & 0.8003 \\
 Decision Tree             & 0.1341 & 0.1371 & 0.6452 & 0.8282 \\
 Random Forest             & 0.1410 & 0.1526 & 0.3644 & 0.8115 \\
 XGBoost                   & 0.1482 & 0.1513 & 0.6030 & 0.8162 \\
@@ -170,11 +170,11 @@ This comparison is descriptive rather than a perfectly controlled estimate of th
 
 Brier score was recorded as an initial probability-quality measure, where lower values are better. The test-set readmission prevalence is approximately 0.0898. A model that predicts this prevalence for every patient would have a Brier score of approximately 0.0817.
 
-Regularised Logistic Regression and Random Forest produced the lowest Brier scores, both approximately 0.0800. FT-Transformer and CatBoost followed at 0.0852 and 0.0857. XGBoost and Decision Tree produced substantially higher Brier scores of 0.1548 and 0.2357.
+Random Forest produced the lowest Brier score, approximately 0.0800. FT-Transformer and CatBoost followed at 0.0852 and 0.0857, while the weighted Logistic Regression produced a Brier score of approximately 0.0860. XGBoost and Decision Tree produced substantially higher Brier scores of 0.1548 and 0.2357.
 
-These results indicate that the raw probability outputs from Logistic Regression and Random Forest are currently more promising as absolute risk estimates. However, the Brier score reflects both calibration and discrimination and is not sufficient by itself to establish good calibration. A full calibration assessment should therefore add calibration curves and, where possible, calibration slope and intercept before predicted probabilities are interpreted as clinical risks.
+These results indicate that Random Forest currently provides the most promising raw probability outputs among the tuned models. The Logistic Regression Brier score increased from approximately 0.0800 in the earlier unweighted model to 0.0860 after the positive class was given twice the weight. Because its AUPRC and AUROC remained almost unchanged, this suggests that the weighting mainly shifted the predicted probability scale rather than improving discrimination, while reducing the quality of the raw probabilities as estimates of absolute risk. However, the Brier score reflects both calibration and discrimination and is not sufficient by itself to establish good calibration. A full calibration assessment should therefore add calibration curves and, where possible, calibration slope and intercept before predicted probabilities are interpreted as clinical risks.
 
-The result is also relevant to class weighting. Logistic Regression and Random Forest selected no additional positive-class weighting, whereas Decision Tree used balanced class weights, XGBoost selected \texttt{scale\_pos\_weight = 6}, and both CatBoost and FT-Transformer selected a positive-class weight of 2. Weighting can improve emphasis on the minority class while shifting the scale of predicted probabilities, so calibration and class-weight sensitivity should be considered together.
+The result is also relevant to class weighting. Logistic Regression selected \texttt{class\_weight = \{0: 1, 1: 2\}}, whereas Random Forest selected no additional positive-class weighting. Decision Tree used balanced class weights, XGBoost selected \texttt{scale\_pos\_weight = 6}, and both CatBoost and FT-Transformer selected a positive-class weight of 2. For Logistic Regression, the expanded weighting search did not materially improve discrimination but did shift the probability scale, as reflected by the higher selected threshold and worse Brier score. Calibration and class-weight sensitivity should therefore be considered together.
 
 \section{Provisional model choice and next steps}
 
@@ -191,8 +191,8 @@ There is not yet enough evidence to identify one model as an unambiguous final w
 
 At this stage, CatBoost and Random Forest appear to be particularly useful candidates for the final model comparison, with XGBoost retained as a close alternative. FT-Transformer does not currently provide enough improvement to justify its substantially greater complexity and computational cost.
 
-The next planned experiment is the class-weight sensitivity analysis requested after the main report, particularly for Regularised Logistic Regression and Random Forest because their hyperparameter searches selected no additional weight for the readmission class. This analysis should test whether deliberately increasing positive-class weight can reduce the false-positive cost required to maintain high recall, or whether it mainly shifts the probability scale without improving underlying discrimination.
+The expanded Logistic Regression class-weight search selected \texttt{class\_weight = \{0: 1, 1: 2\}} rather than no weighting. However, its test AUPRC and AUROC remained almost unchanged, while the validation-selected threshold increased from 0.0674 to 0.1256 and the Brier score increased from approximately 0.0800 to 0.0860. This suggests that the additional positive-class weight mainly shifted the probability scale rather than improving underlying discrimination. The remaining class-weight sensitivity analysis should examine whether the same pattern occurs for Random Forest, whose hyperparameter search still selected no additional positive-class weighting.
 
-After class-weight sensitivity has been assessed, final model selection should consider three aspects together: threshold-independent discrimination (AUPRC and AUROC), behaviour at the clinically motivated operating point (recall, precision, specificity/FPR, F2, and proportion flagged), and calibration. Interpretability and subgroup performance can then be used as additional considerations before making any claim about practical healthcare use.
+After completing the remaining class-weight sensitivity analysis, final model selection should consider three aspects together: threshold-independent discrimination (AUPRC and AUROC), behaviour at the clinically motivated operating point (recall, precision, specificity/FPR, F2, and proportion flagged), and calibration. Interpretability and subgroup performance can then be used as additional considerations before making any claim about practical healthcare use.
 
 \end{document}
