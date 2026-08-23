@@ -1,0 +1,7 @@
+{
+  "learning_rate": 0.0005,
+  "weight_decay": 1e-06,
+  "batch_size": 1024,
+  "pos_weight": 2.0,
+  "epochs": 9
+}

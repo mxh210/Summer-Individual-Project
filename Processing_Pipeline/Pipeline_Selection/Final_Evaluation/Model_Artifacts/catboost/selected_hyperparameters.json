@@ -1,0 +1,13 @@
+{
+  "structure": {
+    "depth": 5,
+    "l2_leaf_reg": 10.0,
+    "random_strength": 2.0,
+    "border_count": 64,
+    "max_ctr_complexity": 1,
+    "subsample": 1.0,
+    "scale_pos_weight": 1.0
+  },
+  "learning_rate": 0.03,
+  "iterations": 172
+}

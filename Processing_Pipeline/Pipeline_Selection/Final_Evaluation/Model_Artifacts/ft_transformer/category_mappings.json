@@ -1,0 +1,61 @@
+{
+  "gender": {
+    "Female": 1,
+    "Male": 2
+  },
+  "race_group": {
+    "AfricanAmerican": 1,
+    "Caucasian": 2,
+    "Missing": 3,
+    "Other": 4
+  },
+  "age_group": {
+    "30-60": 1,
+    "<=30": 2,
+    ">60": 3
+  },
+  "admission_source_group": {
+    "Emergency room": 1,
+    "Other": 2,
+    "Physician/clinic referral": 3
+  },
+  "discharge_group": {
+    "Home": 1,
+    "Other": 2
+  },
+  "medical_specialty_group": {
+    "Cardiology": 1,
+    "Family/General Practice": 2,
+    "Internal Medicine": 3,
+    "Missing": 4,
+    "Other": 5,
+    "Surgery": 6
+  },
+  "primary_diagnosis": {
+    "Circulatory": 1,
+    "Diabetes": 2,
+    "Digestive": 3,
+    "Genitourinary": 4,
+    "Injury": 5,
+    "Musculoskeletal": 6,
+    "Neoplasms": 7,
+    "Other": 8,
+    "Respiratory": 9
+  },
+  "hba1c_group": {
+    "High, medication changed": 1,
+    "High, medication not changed": 2,
+    "No test was performed": 3,
+    "Normal result of the test": 4
+  },
+  "max_glu_serum": {
+    ">200": 1,
+    ">300": 2,
+    "Missing": 3,
+    "Norm": 4
+  },
+  "diabetesMed": {
+    "No": 1,
+    "Yes": 2
+  }
+}

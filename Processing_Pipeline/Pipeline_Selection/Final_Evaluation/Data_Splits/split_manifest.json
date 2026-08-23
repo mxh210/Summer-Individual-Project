@@ -1,0 +1,10 @@
+{
+  "dataset_relative_path": "Processed_Dataset/diabetic_data_cleaned_stage1.csv",
+  "dataset_sha256": "d4ee1de22bab16b41cd50b819a69689c476522f161f89e5e361706eb45ed92bd",
+  "n_rows": 69987,
+  "target": "readmitted_30",
+  "final_test_size": 0.2,
+  "validation_size": 0.2,
+  "model_training_size": 0.6000000000000001,
+  "final_split_seed": 20260823
+}

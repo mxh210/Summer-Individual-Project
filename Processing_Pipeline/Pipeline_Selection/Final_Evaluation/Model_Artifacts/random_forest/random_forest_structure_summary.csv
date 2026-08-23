@@ -1,0 +1,10 @@
+,value
+number_of_trees,500.0
+minimum_tree_depth,8.0
+median_tree_depth,8.0
+mean_tree_depth,8.0
+maximum_tree_depth,8.0
+minimum_leaf_count,78.0
+median_leaf_count,139.0
+mean_leaf_count,137.29
+maximum_leaf_count,182.0

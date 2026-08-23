@@ -1,0 +1,16 @@
+{
+  "variant": "interaction",
+  "additive_best_params": {
+    "model__C": 0.01,
+    "model__class_weight": {
+      "0": 1,
+      "1": 2
+    },
+    "model__l1_ratio": 0.75
+  },
+  "interaction_best_params": {
+    "model__C": 0.01,
+    "model__class_weight": "balanced",
+    "model__l1_ratio": 1.0
+  }
+}

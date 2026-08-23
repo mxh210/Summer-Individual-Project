@@ -1,0 +1,13 @@
+{
+  "model__min_samples_split": 20,
+  "model__min_samples_leaf": 400,
+  "model__max_leaf_nodes": 127,
+  "model__max_features": 0.75,
+  "model__max_depth": null,
+  "model__criterion": "log_loss",
+  "model__class_weight": {
+    "0": 1,
+    "1": 4
+  },
+  "model__ccp_alpha": 5e-05
+}
