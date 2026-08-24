@@ -1,0 +1,53 @@
+model,parameter_group,parameter,value
+CatBoost,structure,border_count,64
+CatBoost,structure,depth,5
+CatBoost,structure,l2_leaf_reg,10.0
+CatBoost,structure,max_ctr_complexity,1
+CatBoost,structure,random_strength,2.0
+CatBoost,structure,scale_pos_weight,1.0
+CatBoost,structure,subsample,1.0
+CatBoost,training,iterations,172
+CatBoost,training,learning_rate,0.03
+Decision Tree,model,model__ccp_alpha,5e-05
+Decision Tree,model,model__class_weight,"{""0"": 1, ""1"": 4}"
+Decision Tree,model,model__criterion,log_loss
+Decision Tree,model,model__max_depth,None
+Decision Tree,model,model__max_features,0.75
+Decision Tree,model,model__max_leaf_nodes,127
+Decision Tree,model,model__min_samples_leaf,400
+Decision Tree,model,model__min_samples_split,20
+FT-Transformer,architecture,attention_dropout,0.3
+FT-Transformer,architecture,attention_n_heads,8
+FT-Transformer,architecture,d_block,64
+FT-Transformer,architecture,ffn_d_hidden_multiplier,1.3333333333333333
+FT-Transformer,architecture,ffn_dropout,0.0
+FT-Transformer,architecture,n_blocks,2
+FT-Transformer,architecture,residual_dropout,0.0
+FT-Transformer,training,batch_size,1024
+FT-Transformer,training,epochs,9
+FT-Transformer,training,learning_rate,0.0005
+FT-Transformer,training,pos_weight,2.0
+FT-Transformer,training,weight_decay,1e-06
+Random Forest,model,model__class_weight,None
+Random Forest,model,model__criterion,gini
+Random Forest,model,model__max_depth,8
+Random Forest,model,model__max_features,log2
+Random Forest,model,model__max_samples,None
+Random Forest,model,model__min_samples_leaf,5
+Random Forest,model,model__min_samples_split,2
+Random Forest,model,model__n_estimators,500
+Regularised Logistic Regression,model,model__C,0.01
+Regularised Logistic Regression,model,model__class_weight,balanced
+Regularised Logistic Regression,model,model__l1_ratio,1.0
+Regularised Logistic Regression,selection,variant,interaction
+XGBoost,structure,colsample_bytree,1.0
+XGBoost,structure,gamma,1.0
+XGBoost,structure,max_delta_step,1
+XGBoost,structure,max_depth,2
+XGBoost,structure,min_child_weight,10
+XGBoost,structure,reg_alpha,1.0
+XGBoost,structure,reg_lambda,20.0
+XGBoost,structure,scale_pos_weight,6.0
+XGBoost,structure,subsample,0.6
+XGBoost,training,learning_rate,0.03
+XGBoost,training,n_estimators,524
