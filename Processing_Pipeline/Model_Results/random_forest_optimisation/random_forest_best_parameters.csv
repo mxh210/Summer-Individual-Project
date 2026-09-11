@@ -1,9 +1,0 @@
-parameter,selected_value
-model__n_estimators,500
-model__min_samples_split,2
-model__min_samples_leaf,5
-model__max_samples,None
-model__max_features,log2
-model__max_depth,8
-model__criterion,gini
-model__class_weight,None

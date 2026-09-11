@@ -1,0 +1,18 @@
+# Frozen model runtime
+numpy==2.4.6
+pandas==2.3.3
+scipy==1.17.1
+scikit-learn==1.9.0
+joblib==1.5.3
+threadpoolctl==3.6.0
+narwhals==2.25.0
+
+# Exact pandas dependencies from the modelling environment
+python-dateutil==2.9.0.post0
+pytz==2026.3.post1
+tzdata==2026.3
+six==1.17.0
+
+# AWS SDK and Lambda runtime interface
+boto3==1.43.79
+awslambdaric==4.0.2

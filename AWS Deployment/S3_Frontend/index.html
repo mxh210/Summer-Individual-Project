@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#005eb8">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; connect-src https://*.execute-api.us-east-1.amazonaws.com; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'"
+    >
+    <meta name="referrer" content="no-referrer">
+    <title>Readmission assessment – Research prototype</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="config.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#maincontent">Skip to main content</a>
+
+    <header class="site-header" role="banner">
+      <div class="width-container header-inner">
+        <div class="service-identity" aria-label="Readmission Review">
+          <span class="service-name">Readmission Review</span>
+        </div>
+        <span class="prototype-label">Research prototype</span>
+      </div>
+    </header>
+
+    <div class="phase-banner">
+      <div class="width-container phase-banner-inner">
+        <strong class="phase-tag">Prototype</strong>
+        <p>This research demonstration is not an NHS service and must not be used for clinical decisions.</p>
+      </div>
+    </div>
+
+    <main class="width-container main-wrapper" id="maincontent">
+      <section class="intro" aria-labelledby="page-title">
+        <p class="caption">30-day readmission assessment</p>
+        <h1 id="page-title">Review a demo encounter</h1>
+        <p class="lead">
+          Choose a deidentified demo patient ID to view the stored encounter
+          profile and the output from the frozen Random Forest model.
+        </p>
+      </section>
+
+      <section class="selector-section" aria-labelledby="selector-title">
+        <form id="assessment-form" novalidate>
+          <fieldset>
+            <legend id="selector-title">Select a demo patient ID</legend>
+            <label for="patient-id">Demo patient ID</label>
+            <p id="id-help" class="hint">For example, DEMO-00001. Valid range: DEMO-00001 to DEMO-02000.</p>
+            <div class="selector-row">
+              <input
+                id="patient-id"
+                name="patient-id"
+                class="patient-input"
+                type="text"
+                value="DEMO-00001"
+                autocomplete="off"
+                spellcheck="false"
+                aria-describedby="id-help"
+              >
+              <button class="button button-primary" id="submit-button" type="submit">
+                Load assessment
+              </button>
+            </div>
+            <div class="selector-actions" aria-label="Browse demo patient IDs">
+              <button class="button button-secondary" id="previous-button" type="button">
+                Previous ID
+              </button>
+              <button class="button button-secondary" id="next-button" type="button">
+                Next ID
+              </button>
+              <button class="button button-secondary" id="random-button" type="button">
+                Choose random ID
+              </button>
+            </div>
+          </fieldset>
+        </form>
+      </section>
+
+      <div id="status" class="status" role="status" aria-live="polite" aria-atomic="true"></div>
+
+      <section id="results" class="results" hidden aria-live="polite" aria-labelledby="result-title">
+        <div class="result-heading">
+          <div>
+            <p class="caption">Assessment result</p>
+            <h2 id="result-title">Patient <span id="result-id">DEMO-00001</span></h2>
+          </div>
+          <span id="risk-badge" class="risk-badge">LOW</span>
+        </div>
+
+        <article id="assessment-card" class="assessment-card">
+          <div class="assessment-topline">
+            <div>
+              <p class="metric-label">Model-estimated readmission score</p>
+              <p id="score-value" class="score-value">0.0000</p>
+            </div>
+            <div class="review-state">
+              <span id="review-dot" class="review-dot" aria-hidden="true"></span>
+              <strong id="review-value">No review flag</strong>
+            </div>
+          </div>
+
+          <div id="score-scale" class="score-scale" role="img" aria-label="Model score compared with the review threshold">
+            <div class="scale-track">
+              <span id="threshold-marker" class="threshold-marker"></span>
+              <span id="score-marker" class="score-marker"></span>
+            </div>
+            <div class="scale-labels">
+              <span>0.00</span>
+              <span id="threshold-label">Threshold 0.0000</span>
+              <span>0.20+</span>
+            </div>
+          </div>
+
+          <p id="assessment-message" class="assessment-message"></p>
+        </article>
+
+        <aside class="interpretation-callout" aria-labelledby="interpretation-title">
+          <h3 id="interpretation-title">What this result means</h3>
+          <p id="interpretation"></p>
+          <p class="callout-note">
+            The threshold targets 80% recall on the validation data. It is intentionally sensitive and is not a clinical diagnosis.
+          </p>
+        </aside>
+
+        <details class="details-panel">
+          <summary><span>View encounter and model details</span></summary>
+          <div class="details-content">
+            <section class="model-section" aria-labelledby="model-title">
+              <h3 id="model-title">Model information</h3>
+              <dl class="summary-list model-meta">
+                <div>
+                  <dt>Model</dt>
+                  <dd id="model-type"></dd>
+                </div>
+                <div>
+                  <dt>Target</dt>
+                  <dd id="prediction-target"></dd>
+                </div>
+                <div>
+                  <dt>Operating policy</dt>
+                  <dd id="operating-policy"></dd>
+                </div>
+              </dl>
+            </section>
+
+            <section class="profile-section" aria-labelledby="profile-title">
+              <div class="profile-heading">
+                <div>
+                  <p class="caption">Model inputs</p>
+                  <h3 id="profile-title">Deidentified encounter profile</h3>
+                </div>
+                <span>18 frozen input features</span>
+              </div>
+              <div id="profile-groups" class="profile-groups"></div>
+            </section>
+          </div>
+        </details>
+
+        <aside class="warning-callout" aria-label="Research limitation">
+          <h3>Important limitation</h3>
+          <p id="disclaimer-text"></p>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="width-container footer-inner">
+        <p>MSc research deployment demonstration</p>
+        <p>No real patient-identifying data</p>
+      </div>
+    </footer>
+  </body>
+</html>

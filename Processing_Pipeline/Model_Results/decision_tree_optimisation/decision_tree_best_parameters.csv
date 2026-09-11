@@ -1,9 +1,0 @@
-parameter,selected_value
-model__min_samples_split,100
-model__min_samples_leaf,400
-model__max_leaf_nodes,127
-model__max_features,0.75
-model__max_depth,12
-model__criterion,gini
-model__class_weight,balanced
-model__ccp_alpha,0.0

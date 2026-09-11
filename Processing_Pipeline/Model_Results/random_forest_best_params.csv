@@ -1,2 +1,0 @@
-model,best_n_estimators,best_max_depth,best_min_samples_split,best_min_samples_leaf,best_max_features,best_cv_auprc
-Random Forest,500,16,2,10,log2,0.1421129314074074
